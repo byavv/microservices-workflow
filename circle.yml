@@ -6,10 +6,7 @@ machine:
 dependencies:
   pre:
      - sudo pip install docker-compose
-test:
-  pre:
-    # starting the backend services
-     - docker-compose up -d redis mongo broker users   
+test: 
   override:     
      # specifying --no-deps so they don't restart
      - docker-compose run --no-deps web gulp test 
