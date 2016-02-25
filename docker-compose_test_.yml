@@ -12,9 +12,7 @@ services:
       - NODE_ENV=test
       - USERS_HOST=users
       - USERS_PORT=3001  
-    build: ./src/web/    
-    ports:
-     - "8080:3030"
+    build: ./src/web/        
     command: gulp test    
   broker:
     build: ./src/broker/
