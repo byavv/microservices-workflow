@@ -4,8 +4,11 @@ machine:
   services:
      - docker
 dependencies:
+  override:
+     - docker info
   pre:
      - sudo pip install docker-compose
+     - sudo docker-compose -v
 test: 
   override:     
      # specifying --no-deps so they don't restart
