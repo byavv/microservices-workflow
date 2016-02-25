@@ -3,17 +3,16 @@ machine:
     version: 5.1.0
   services:
      - docker
-dependencies:
-  override:
-     - docker info
+dependencies:  
   pre:
      - sudo pip install docker-compose
      - sudo pip install docker-selinux
      - sudo docker-compose -v
+     - dudo docker -v
      - sudo docker info
 test: 
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose run --no-deps web gulp test 
+     - docker-compose run --no-deps --no-proxy web gulp test 
   post:   
      - docker-compose stop
