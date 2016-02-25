@@ -4,16 +4,12 @@ services:
     image: redis
   mongo:
     image: mongo
-  web_test:  
-    extends:
-      file: docker-compose.yml
-      service: web 
+  web:
+    build: ./src/web/
     environment:
-      - NODE_ENV=test
-      - USERS_HOST=users
-      - USERS_PORT=3001  
-    build: ./src/web/        
-    command: gulp test    
+     - USERS_HOST=users
+     - USERS_PORT=3001
+     - NODE_ENV=test    
   broker:
     build: ./src/broker/
     ports: 
