@@ -1,0 +1,6 @@
+.git
+node_modules
+build
+typings
+nodemon.json
+vendor

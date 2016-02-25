@@ -1,0 +1,23 @@
+{
+    "name": "microservices",
+    "version": "1.0.0",
+    "authors": [
+        "aksenchyk <aksenchyk.v@gmail.com>"
+    ],
+    "description": "workflow",
+    "main": "index.js",
+    "keywords": [
+        "microservices"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "~3.3.5"
+    }
+}

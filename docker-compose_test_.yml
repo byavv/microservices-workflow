@@ -1,0 +1,38 @@
+version: '2'
+services:      
+  redis:
+    image: redis
+  mongo:
+    image: mongo
+  web_test:  
+    extends:
+      file: docker-compose.yml
+      service: web 
+    environment:
+      - NODE_ENV=test
+      - USERS_HOST=users
+      - USERS_PORT=3001  
+    build: ./src/web/    
+    ports:
+     - "8080:3030"
+    command: gulp test    
+  broker:
+    build: ./src/broker/
+    ports: 
+     - "1883:1883"
+    environment:
+    - SERVICE_HOST=0.0.0.0
+    - SERVICE_PORT=1883
+    - NODE_ENV=production   
+  users:
+    build: ./src/services/usersservice/
+    environment:
+     - SERVICE_HOST=0.0.0.0
+     - SERVICE_PORT=3001
+     - NODE_ENV=production
+  logger:
+    build: ./src/services/loggerservice/
+    environment:
+     - SERVICE_HOST=0.0.0.0
+     - SERVICE_PORT=3002
+     - NODE_ENV=production

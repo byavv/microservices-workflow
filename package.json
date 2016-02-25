@@ -1,0 +1,14 @@
+{
+  "name": "ms-swiss-knife",
+  "version": "0.0.1",
+  "description": "Microservices workflow", 
+  "keywords": [
+    "microservices",
+    "node",
+    "starter",
+    "workflow",
+    "seneca"
+  ],
+  "author": "aksenchyk <aksenchyk.v@gmail.com>",
+  "license": "MIT"  
+}

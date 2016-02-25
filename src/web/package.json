@@ -1,0 +1,57 @@
+{
+  "name": "ms-swiss-knife",
+  "version": "0.0.1",
+  "description": "Microservices workflow",
+  "main": "server/index.js",
+  "scripts": {
+    "pretest": "npm install",
+    "test": "gulp test",
+    "start": "node server/index.js"
+  },
+  "keywords": [
+    "microservices",
+    "node",
+    "starter",
+    "workflow",
+    "seneca"
+  ],
+  "author": "aksenchyk",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "2.0.0-beta.7",
+    "body-parser": "^1.14.1",
+    "chalk": "^1.1.1",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "lodash": "^3.10.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.3.1",
+    "morgan": "^1.6.1",
+    "nconf": "^0.8.2",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "seneca": "^1.2.0",
+    "zone.js": "0.5.15",
+    "mocha": "^2.2.1"
+  },
+  "devDependencies": {
+    "bower-webpack-plugin": "^0.1.9",
+    "css-loader": "^0.23.0",
+    "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-util": "^3.0.7",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.1.5",
+    "style-loader": "^0.13.0",
+    "ts-loader": "^0.7.2",
+    "typescript": "^1.7.3",
+    "webpack": "^1.12.9",
+    "webpack-merge": "^0.7.3"
+  }
+}
