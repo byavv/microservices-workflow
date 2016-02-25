@@ -8,7 +8,9 @@ dependencies:
      - docker info
   pre:
      - sudo pip install docker-compose
+     - sudo pip install docker-selinux
      - sudo docker-compose -v
+     - sudo docker info
 test: 
   override:     
      # specifying --no-deps so they don't restart
