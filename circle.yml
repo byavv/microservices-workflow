@@ -5,8 +5,7 @@ machine:
      - docker
 dependencies:  
   pre:
-     - sudo pip install docker-compose
-     - sudo pip install docker-selinux
+     - sudo pip install docker-compose     
      - sudo docker-compose -v
      - dudo docker -v
      - sudo docker info
