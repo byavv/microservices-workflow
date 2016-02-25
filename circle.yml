@@ -9,9 +9,9 @@ dependencies:
 test:
   pre:
     # starting the backend services
-     - docker-compose  run -d redis mongo broker users   
+     - docker-compose up -d redis mongo broker users   
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose run --no-deps web_test gulp test 
+     - docker-compose run --no-deps web gulp test 
   post:   
      - docker-compose stop
