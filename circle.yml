@@ -7,7 +7,7 @@ dependencies:
   pre:
      - sudo pip install docker-compose     
      - sudo docker-compose -v
-     - dudo docker -v
+     - sudo docker -v
      - sudo docker info
 test: 
   override:     
