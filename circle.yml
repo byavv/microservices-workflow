@@ -12,6 +12,7 @@ dependencies:
 test: 
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose run --no-deps --no-proxy web gulp test 
+     - docker-compose run -d --no-deps web
+     - gulp test 
   post:   
      - docker-compose stop
