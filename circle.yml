@@ -9,12 +9,9 @@ dependencies:
 test:
   pre:
     # starting the backend services
-     - docker-compose -f docker-compose_test_.yml run -d redis
-     - docker-compose -f docker-compose_test_.yml run -d mongo
-     - docker-compose -f docker-compose_test_.yml run -d broker
-     - docker-compose -f docker-compose_test_.yml run -d users     
+     - docker-compose  run -d redis mongo broker users   
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose -f docker-compose_test_.yml run --no-deps web_test gulp test 
+     - docker-compose run --no-deps web_test gulp test 
   post:   
      - docker-compose stop
