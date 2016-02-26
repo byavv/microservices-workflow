@@ -41,7 +41,7 @@ config.configure({
     }); 
 
     //add networking
-    seneca.listen({ host: process.env.SERVICE_HOST, port: process.env.SERVICE_PORT });
+    seneca.listen({ host: process.env.SERVICE_HOST || "localhost", port: +process.env.SERVICE_PORT || 10101 });
 })
 
 
