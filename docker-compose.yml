@@ -1,3 +1,4 @@
+# development composition
 version: '2'
 services:      
   redis:
@@ -10,10 +11,7 @@ services:
       service: web
     ports:
      - "3030:3030"
-    environment:
-    # if you start developing your app (web) you should change this to:
-    # - USERS_HOST=localhost 
-    # the same is for all services
+    environment:   
      - USERS_HOST=users 
      - USERS_PORT=3031
      - NODE_ENV=development 

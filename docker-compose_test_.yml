@@ -1,3 +1,4 @@
+# test composition
 version: '2'
 services:      
   redis:
