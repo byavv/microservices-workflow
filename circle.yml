@@ -9,10 +9,9 @@ dependencies:
      - sudo docker-compose -v
      - sudo docker -v
      - sudo docker info
-test: 
-  override:     
-     # specifying --no-deps so they don't restart
-     - docker-compose run -d --no-deps web
-     - gulp test 
-  post:   
-     - docker-compose stop
+test:
+  pre:
+     - git grep --color TODO | cat
+  post:
+     - node_modules/bin/gulp test      
+  
