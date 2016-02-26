@@ -1,6 +1,6 @@
 machine:
   pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   node:
     version: 5.1.0
   services:
@@ -14,9 +14,8 @@ dependencies:
      - sudo docker -v     
 test:
   pre:
-    - git grep --color TODO | cat 
+     - git grep --color TODO | cat 
   override:     
-     # specifying --no-deps so they don't restart
      - docker-compose -f docker-compose_test_.yml run --no-deps web 
   post:   
      - docker-compose stop
