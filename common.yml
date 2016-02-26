@@ -5,17 +5,13 @@ services:
   mongo:
     image: mongo
   web:
-    build: ./src/web/    
-    ports:
-     - "8080:3030"
+    build: ./src/web/
     environment:
      - USERS_HOST=users
      - USERS_PORT=3001
      - NODE_ENV          
   broker:
-    build: ./src/broker/
-    ports: 
-     - "1883:1883"
+    build: ./src/broker/   
     environment:
     - SERVICE_HOST=0.0.0.0
     - SERVICE_PORT=1883

@@ -17,6 +17,6 @@ test:
     - git grep --color TODO | cat 
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose -f docker-compose_test_.yml run --no-deps web 
+     - docker-compose -f docker-compose_test_.yml -e NODE_ENV=test run --no-deps web 
   post:   
      - docker-compose stop

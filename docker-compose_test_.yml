@@ -3,16 +3,12 @@ services:
   redis:
     image: redis
   mongo:
-    image: mongo
+    image: mongo  
   web:
-    build: ./src/web/    
-    ports:
-     - "8080:3030"
-    environment:
-     - USERS_HOST=users
-     - USERS_PORT=3001
-     - NODE_ENV=test
-    command: npm test   
+    extends:
+      file: docker-compose.yml
+      service: web
+    command: npm test
   broker:
     build: ./src/broker/
     ports: 
@@ -20,16 +16,16 @@ services:
     environment:
     - SERVICE_HOST=0.0.0.0
     - SERVICE_PORT=1883
-    - NODE_ENV=test   
+    - NODE_ENV   
   users:
     build: ./src/services/usersservice/
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3001
-     - NODE_ENV=test
+     - NODE_ENV
   logger:
     build: ./src/services/loggerservice/
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3002
-     - NODE_ENV=test
+     - NODE_ENV
