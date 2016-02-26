@@ -19,6 +19,5 @@ test:
   override:     
      # specifying --no-deps so they don't restart
      - docker-compose run --no-deps web 
-     - cd app; gulp test 
   post:   
      - docker-compose stop
