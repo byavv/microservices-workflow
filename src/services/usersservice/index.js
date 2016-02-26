@@ -4,11 +4,13 @@ var seneca = require('seneca')();
 var mongo = require('mongoose');
 var config = require("./config");
 
-var mqtt = require('mqtt').connect('mqtt://broker:1883');
+var mongoHost = process.env.MONGO_HOST || "mongo";
+var brokerHost = process.env.BROKER_HOST || "broker";
 
+var mqtt = require('mqtt').connect(`mqtt://${brokerHost}:1883`);
 
 config.configure({
-    cp: 'mongodb://mongo:27017/workflow'
+    cp: `mongodb://${mongoHost}:27017/workflow`
 }).then((result) => {
     var User = mongo.model("User");
 

@@ -3,32 +3,53 @@ services:
   redis:
     image: redis
   mongo:
-    image: mongo
+    image: mongo  
   web:
-    build: ./src/web/    
+    extends:
+      file: common.yml
+      service: web
     ports:
-     - "8080:3030"
+     - "3030:3030"
     environment:
-     - USERS_HOST=users
-     - USERS_PORT=3001
-     - NODE_ENV          
+    # if you start developing your app (web) you should change this to:
+    # - USERS_HOST=localhost 
+    # the same is for all services
+     - USERS_HOST=users 
+     - USERS_PORT=3031
+     - NODE_ENV=development 
+    command: npm start
   broker:
-    build: ./src/broker/
-    ports: 
-     - "1883:1883"
+    extends:
+      file: common.yml
+      service: broker
+    ports:
+     - "1883:1883"    
     environment:
     - SERVICE_HOST=0.0.0.0
     - SERVICE_PORT=1883
-    - NODE_ENV   
+    - NODE_ENV=development
+    - REDIS_HOST=redis
   users:
-    build: ./src/services/usersservice/
+    extends:
+      file: common.yml
+      service: users
+    ports:
+     - "3031:3031" 
     environment:
      - SERVICE_HOST=0.0.0.0
-     - SERVICE_PORT=3001
-     - NODE_ENV
+     - SERVICE_PORT=3031
+     - NODE_ENV=development
+     - MONGO_HOST=mongo
+     - BROKER_HOST=broker
   logger:
-    build: ./src/services/loggerservice/
+    extends:
+      file: common.yml
+      service: logger 
+    ports:
+     - "3032:3032"
     environment:
      - SERVICE_HOST=0.0.0.0
-     - SERVICE_PORT=3002
-     - NODE_ENV
+     - SERVICE_PORT=3032
+     - NODE_ENV=development
+     - BROKER_HOST=broker
+ 

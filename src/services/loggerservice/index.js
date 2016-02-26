@@ -1,5 +1,6 @@
 'use strict';
-var mqtt = require('mqtt').connect('mqtt://broker:1883');
+var brokerHost = process.env.BROKER_HOST || "broker";
+var mqtt = require('mqtt').connect(`mqtt://${brokerHost}:1883`);
 var seneca = require('seneca')();
 
 mqtt.on('connect', () => {

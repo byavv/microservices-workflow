@@ -5,12 +5,14 @@ var mosca = require('mosca');
 var servicePort = process.env.SERVICE_PORT || '1883';
 var serviceHost = process.env.SERVICE_HOST || '0.0.0.0';
 
+var redisHost = process.env.REDIS_HOST || "redis";
+
 var pubsubsettings = {
     type: 'redis',
     redis: require('redis'),
     db: 12,
     port: 6379,
-    host: "redis"
+    host: redisHost
 };
 
 var settings = {

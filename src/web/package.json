@@ -15,7 +15,7 @@
     "workflow",
     "seneca"
   ],
-  "author": "aksenchyk",
+  "author": "aksenchyk <aksenchyk.v@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.7",

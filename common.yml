@@ -1,3 +1,5 @@
+# main structure of the app
+# define services and template environment variables
 version: '2'
 services:      
   redis:
@@ -6,25 +8,17 @@ services:
     image: mongo
   web:
     build: ./src/web/
-    environment:
-     - USERS_HOST=users
-     - USERS_PORT=3001
-     - NODE_ENV          
+    environment:    
+     - NODE_ENV
   broker:
     build: ./src/broker/   
-    environment:
-    - SERVICE_HOST=0.0.0.0
-    - SERVICE_PORT=1883
-    - NODE_ENV   
+    environment:    
+     - NODE_ENV
   users:
     build: ./src/services/usersservice/
-    environment:
-     - SERVICE_HOST=0.0.0.0
-     - SERVICE_PORT=3001
+    environment:    
      - NODE_ENV
   logger:
     build: ./src/services/loggerservice/
-    environment:
-     - SERVICE_HOST=0.0.0.0
-     - SERVICE_PORT=3002
+    environment:     
      - NODE_ENV

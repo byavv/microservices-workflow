@@ -13,8 +13,8 @@ services:
     environment:
      - USERS_HOST=users
      - USERS_PORT=3001
-     - NODE_ENV=test 
-    command: npm test
+     - NODE_ENV=production 
+    command: npm start
   broker:
     extends:
       file: common.yml
@@ -22,7 +22,7 @@ services:
     environment:
     - SERVICE_HOST=0.0.0.0
     - SERVICE_PORT=1883
-    - NODE_ENV=test
+    - NODE_ENV=production
   users:
     extends:
       file: common.yml
@@ -30,7 +30,7 @@ services:
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3001
-     - NODE_ENV=test
+     - NODE_ENV=production
   logger:
     extends:
       file: common.yml
@@ -38,4 +38,4 @@ services:
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3002
-     - NODE_ENV=test
+     - NODE_ENV=production
