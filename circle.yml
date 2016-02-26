@@ -11,13 +11,12 @@ dependencies:
   pre:
      - sudo pip install docker-compose     
      - sudo docker-compose -v
-     - sudo docker -v
-     - sudo docker info
+     - sudo docker -v     
 test:
   pre:
     - git grep --color TODO | cat 
   override:     
      # specifying --no-deps so they don't restart
-     - docker-compose run --no-deps web 
+     - docker-compose -f docker-compose_test_.yml run --no-deps web 
   post:   
      - docker-compose stop

@@ -11,8 +11,7 @@ services:
     environment:
      - USERS_HOST=users
      - USERS_PORT=3001
-     - NODE_ENV=test
-    command: npm test   
+     - NODE_ENV=production      
   broker:
     build: ./src/broker/
     ports: 
