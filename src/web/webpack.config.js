@@ -84,41 +84,6 @@ var vendors_config = {
     ]
 };
 
-var test_client_config = {
-    resolve: {
-        cache: false
-    },
-    devtool: 'inline-source-map',
-    /*module: {
-        postLoaders: [
-            {
-                test: /\.(js|ts)$/,
-                include: path.join(__dirname, 'client'),
-                loader: 'istanbul-instrumenter-loader',
-                exclude: [
-                    /\.e2e\.ts$/,
-                    /node_modules/
-                ]
-            }
-        ],
-        noParse: [
-            /zone\.js\/build\/.+/,
-            /angular2\/bundles\/.+/
-        ]
-    },*/
-    stats: { colors: true, reasons: true },
-    debug: false,    
-    // we need this due to problems with es6-shim
-    node: {
-        global: 'window',
-        progress: false,
-        crypto: 'empty',
-        module: false,
-        clearImmediate: false,
-        setImmediate: false
-    }
-}
-
 module.exports = function (env) {
     var environment = env || process.env.NODE_ENV || "development";
     var productionTools = {
@@ -146,12 +111,10 @@ module.exports = function (env) {
     if (environment === 'production') {
         client = webpackMerge(common, app_config, Object.assign({}, productionTools));
         vendors = webpackMerge(common, vendors_config, Object.assign({}, productionTools));
-    }
-    test = webpackMerge(common, test_client_config);
+    }   
 
     return {
         client: client,
-        vendors: vendors,
-        test: test
+        vendors: vendors       
     }
 }
