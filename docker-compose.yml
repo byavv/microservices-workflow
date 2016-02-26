@@ -1,34 +1,41 @@
-version: '2'
-services:      
-  redis:
+redis:
     image: redis
-  mongo:
-    image: mongo
-  web:
+mongo:
+    image: mongo     
+web:
     build: ./src/web/    
     ports:
      - "8080:3030"
+    links:
+     - users
     environment:
      - USERS_HOST=users
      - USERS_PORT=3001
-     - NODE_ENV=production    
-  broker:
+     - NODE_ENV=production        
+broker:
     build: ./src/broker/
     ports: 
      - "1883:1883"
+    links:
+     - redis
     environment:
     - SERVICE_HOST=0.0.0.0
     - SERVICE_PORT=1883
     - NODE_ENV=production   
-  users:
+users:
     build: ./src/services/usersservice/
+    links:
+     - broker
+     - mongo
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3001
      - NODE_ENV=production
-  logger:
+logger:
     build: ./src/services/loggerservice/
+    links:
+     - broker     
     environment:
      - SERVICE_HOST=0.0.0.0
      - SERVICE_PORT=3002
-     - NODE_ENV=production
+     - NODE_ENV=production       

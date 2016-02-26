@@ -5,3 +5,4 @@ typings
 nodemon.json
 vendor
 ssss.yml
+docker-compose2.yml
