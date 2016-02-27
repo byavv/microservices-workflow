@@ -4,7 +4,6 @@ var mosca = require('mosca');
 
 var servicePort = process.env.SERVICE_PORT || '1883';
 var serviceHost = process.env.SERVICE_HOST || '0.0.0.0';
-
 var redisHost = process.env.REDIS_HOST || "redis";
 
 var pubsubsettings = {
@@ -29,7 +28,7 @@ function setup() {
     console.log(`Mosca server is up and running on ${serviceHost}:${servicePort}`)
 }
 server.on('published', (packet, client) => {
-
+    //TODO
 });
 
 server.on('ready', setup);

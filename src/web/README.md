@@ -1,9 +1,10 @@
 ## What we've got here
 
-* Simple microservice, which is the simplest app, made with angular 2 (b7)
+* Simple microservice, which is the simplest node.js app. Represents application api.
+* Frontand made with Angular2 (b7)
 
 ## Dependencies
-* Depends on users microservice
+* Depends on users microservice, so it should be up
 
 ## Quick start
 Install:
