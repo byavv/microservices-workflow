@@ -1,13 +1,13 @@
 [![Circle CI](https://circleci.com/gh/byavv/mswf/tree/master.svg)](https://circleci.com/gh/byavv/mswf/tree/master)
-## Microservises workflow (Node.js, Angular2, Seneca, Mosca)
+## Microservices workflow (Node.js, Angular2, Seneca, Mosca)
 
 > Note! Angular 2 is in beta7
 
 #### What we've got here
 
-* Implementation of microservices architect for Node.js apps via Seneca and Mosca. The application is split up into a number of microservices, wrapped in docker containers, each with its own concern.
-* Angular 2 (only because it's my way to write frontend).
-* Environment for testing and development microservices separately from others
+* Implementation of microservices architect for Node.js apps via [Seneca](http://senecajs.org/get-started/) and [Mosca](http://www.mosca.io/). The application is split up into a number of microservices, wrapped in docker containers.
+* Angular 2 for frontend.
+* Environment for testing and development microservices separately from others.
 
 ## Requirements
 * [Docker](https://docs.docker.com/linux/step_one/)
@@ -30,16 +30,16 @@ Go to [localhost:3030](localhost:3030)
 
 ## Development
 Every application component (microservice) is launched in its own container. It's a big overhead to build container every time you make changes.
-To tackle this, start microservice, you are working on via gulp or whatever, and microservices, it depends
-on - in their own containers. To rich microservices, running in containers, there are ports, exported when they are established via docker-compose. 
-So, you have to be sure that your containers are reachable for your "host" environment.
+To tackle this, start microservice, you are working on via gulp or whatever, and microservices, it depends on - in their own containers. 
+To rich microservices, running in containers, there are ports, exported when they are established via docker-compose. So, you have to be sure 
+that your containers are reachable for your "host" environment.
 
 start dependencies within containers
 ```bush
 docker-compose up mongo redis broker logger users
 ```
 and (users microservice should be richable for host)
-move to the folder
+move to microservice folder
 ```bush
 cd src/web
 ```
