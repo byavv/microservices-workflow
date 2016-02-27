@@ -9,6 +9,10 @@
     "workflow",
     "seneca"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byavv/mswf.git"
+  },
   "author": "aksenchyk <aksenchyk.v@gmail.com>",
   "license": "MIT"  
 }
