@@ -103,7 +103,7 @@ module.exports = function (env) {
         plugins: [new webpack.HotModuleReplacementPlugin()]
     }
 
-    var client, vendors, test;
+    var client, vendors;
     if (environment === 'development') {
         client = webpackMerge(common, app_config, devTools);
         vendors = webpackMerge(common, vendors_config, {/*dev specific config */ });

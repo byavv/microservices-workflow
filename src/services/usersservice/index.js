@@ -29,18 +29,17 @@ config.configure({
     });
 
     seneca.add({ role: 'user', cmd: 'get' }, (args, callback) => {
-
+        //TODO
     });
 
     seneca.add({ role: 'user', cmd: 'update' }, (args, callback) => {
-
+        //TODO
     });
 
     seneca.add({ role: 'user', cmd: 'delete' }, (args, callback) => {
-
+        //TODO
     }); 
-
-    //add networking
+    
     seneca.listen({ host: process.env.SERVICE_HOST || "localhost", port: +process.env.SERVICE_PORT || 10101 });
 })
 
