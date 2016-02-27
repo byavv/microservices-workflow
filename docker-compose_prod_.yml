@@ -14,7 +14,8 @@ services:
     environment:
      - USERS_HOST=users
      - USERS_PORT=3001
-     - NODE_ENV=production 
+     - NODE_ENV=production
+     - SERVICE_PORT=3030
     command: npm start
   broker:
     extends:
