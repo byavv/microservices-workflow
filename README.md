@@ -1,5 +1,5 @@
 [![Circle CI](https://circleci.com/gh/byavv/mswf/tree/master.svg)](https://circleci.com/gh/byavv/mswf/tree/master)
-## Microservices workflow (Node.js, Angular2, Seneca, Mosca)
+## Microservices workflow (Node.js, Angular2, Seneca, Mosca, MQTT)
 
 > Note! Angular 2 is in beta7
 
@@ -31,23 +31,32 @@ Go to [localhost:3030](localhost:3030)
 ## Development
 Every application component (microservice) is launched in its own container. It's a big overhead to build container every time you make changes.
 To tackle this, start microservice, you are working on via gulp or whatever, and microservices, it depends on - in their own containers. 
-To rich microservices, running in containers, there are ports, exported when they are established via docker-compose. So, you have to be sure 
+To rich microservices, running in containers, docker-compose exports http ports when they are started in dev mode (using default docker-compose.yml). 
+So, you have to be sure 
 that your containers are reachable for your "host" environment.
 
-start dependencies within containers
+Start dependencies within containers:
 ```bush
 docker-compose up mongo redis broker logger users
 ```
 and (users microservice should be richable for host)
-move to microservice folder
+Move to microservice folder:
 ```bush
 cd src/web
 ```
-install deps
+Install deps:
 ```bush
-npm install
+npm install 
+#in case of web microservice
+typings install
+gulp build
 ```
-start default gulp task to watch you changes and automatically rebuild when changes occur
+Start default gulp task to watch you changes and automatically rebuild when changes occur:
 ```bush
 gulp
 ```
+## Testing
+Each microservice can be tested separately. For now, unit tests only.
+##Contribution
+Feel free to contribute. This project is a playground and my first experience in microservices architect, 
+so I would appreciate any new ideas.
