@@ -4,13 +4,16 @@ var express = require("express"),
     morgan = require("morgan"),
     bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
-    path = require("path")
+    path = require("path"),
+    nconf = require("nconf")
    ;
 
 module.exports = function (app) {    
     app.set('views', path.join(__dirname, '../views'));
     app.set('view engine', 'jade');
-    app.use(morgan("dev"));
+    if (nconf.get("NODE_ENV") === "development") {
+        app.use(morgan("dev"));
+    }
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(methodOverride("_method"));

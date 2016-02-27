@@ -10,35 +10,36 @@ var path = require("path"),
  * Add environment specific configuration
  */
 let config = {
-    for: (env, done) => {
+    environment: () => {
+        let env = nconf.get("NODE_ENV") || "development";
         let configPath = path.join(__dirname, './env');
-        env = env.toLowerCase().trim();
         return new Promise((resolve, reject) => {
             fs.readdir(configPath, (err, files) => {
                 if (err) reject(err);
-                !!files && files.forEach((file) => {
+                files.forEach((file) => {
                     if (file.match(new RegExp(env))) {
                         nconf.overrides(require(configPath + '/' + file));
-                        console.info(chalk.underline(
-                            `Configuration for ${chalk.white.bgBlue(env.toUpperCase()) } mode was built`
-                            ));
+                        console.info(chalk.underline(`
+                            Configuration for ${chalk.white.bgBlue(env.toUpperCase()) } mode was built
+                        `));
                     }
                 });
-                resolve();
+                return resolve();
             });
         });
-    }
-};
-/**
- * Default app configuration
- * Use: config.configure.for("development").then()..
- */
-Object.defineProperty(config, "configure", {
-    get: () => {
+    },
+    default: () => {
         nconf.argv().env();
-        nconf.use("memory");
         nconf.defaults(defaultConf);
+        nconf.file("app", {
+            file: 'config.json',
+            dir: __dirname,
+            search: true
+        });
         return config;
     }
-});
+};
+
 module.exports = config;
+
+
