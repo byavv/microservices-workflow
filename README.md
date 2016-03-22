@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/byavv/mswf/tree/master.svg)](https://circleci.com/gh/byavv/mswf/tree/master)
+[![Circle CI](https://circleci.com/gh/byavv/microservices-workflow.svg)](https://circleci.com/gh/byavv/mswf/tree/master)
 ## Microservices workflow (Node.js, Angular2, Seneca, Mosca, MQTT)
 
 > Note! Angular 2 is in beta7
